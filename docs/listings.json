@@ -1,0 +1,11 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/hello.html",
+      "/posts/post-with-code/index.html",
+      "/posts/first_post/index.html",
+      "/posts/welcome/index.html"
+    ]
+  }
+]

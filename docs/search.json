@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this blog. Here will Be my about page. Linking to Github and LinkedIn"
+  },
+  {
+    "objectID": "posts/hello.html",
+    "href": "posts/hello.html",
+    "title": "Quarto Basics",
+    "section": "",
+    "text": "For a demonstration of a line plot on a polar axis, see Figure 1.\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 4 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\n\nFigure 1: A line plot on a polar axis"
+  },
+  {
+    "objectID": "posts/welcome/index.html",
+    "href": "posts/welcome/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html",
+    "href": "posts/post-with-code/index.html",
+    "title": "Post With Code",
+    "section": "",
+    "text": "This is a post with executable code."
+  },
+  {
+    "objectID": "posts/first_post/index.html",
+    "href": "posts/first_post/index.html",
+    "title": "Welcome To My Blog",
+    "section": "",
+    "text": "This is my first post ever created. Welcome. This blog shall be a blog about recent projects and thoughts and whatever cool stuff I end up doing.\nFirst, I need to learn and understand how hosting a blog works. I use the Quarto blog. Quarto uses files such as Jupyter Notebooks to create a Webpage(who doesn’t love Jupyter notebooks). The cool thing about having Jupyter Notebooks is that we can put code executables on the blog such as this:\n\nprint('Hello World!')\n# What an icon first line for this blog\n\nHello World!\n\n\nWhen we have our blog post finished we can use commands such as: quarto render and then we add and commit our changes, and finally push to the repository. If we are hosting on a service such as Github Pages."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "blog",
+    "section": "",
+    "text": "Quarto Basics\n\n\n\n\n\n\n\n\n\n\n \n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nAug 20, 2023\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nfun\n\n\n\n\n\n\n\n\n\n\n\nAug 20, 2023\n\n\nMyself\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nAug 17, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+  }
+]

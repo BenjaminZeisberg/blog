@@ -1,0 +1,18 @@
+---
+title: "Welcome To My Blog"
+author: "Myself"
+date: "2023-08-20"
+categories: [fun]
+---
+
+This is my first post ever created. Welcome. This blog shall be a blog about recent projects and thoughts and whatever cool stuff I end up doing.
+
+First, I need to learn and understand how hosting a blog works. I use the Quarto blog. Quarto uses files such as Jupyter Notebooks to create a Webpage(who doesn't love Jupyter notebooks). The cool thing about having Jupyter Notebooks is that we can put code executables on the blog such as this:
+
+```{python}
+print('Hello World!')
+# What an icon first line for this blog
+```
+
+When we have our blog post finished we can use commands such as: `quarto render` and then we add and commit our changes, and finally push to the repository. If we are hosting on a service such as Github Pages.
+
