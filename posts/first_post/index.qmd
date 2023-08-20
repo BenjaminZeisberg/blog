@@ -16,3 +16,6 @@ print('Hello World!')
 
 When we have our blog post finished we can use commands such as: `quarto render` and then we add and commit our changes, and finally push to the repository. If we are hosting on a service such as Github Pages.
 
+We can also display images. Such as this one below.  
+
+![Pikachu](pikachu.png)
