@@ -16,5 +16,17 @@
   },
   "posts/first_post/index.qmd": {
     "index.html": "7ddc93c1"
+  },
+  "posts/second_post/main.ipynb": {
+    "main.html": "3e1c7551"
+  },
+  "posts/second_post/index.qmd": {
+    "index.html": "a612d8c5"
+  },
+  "posts/second_post/index.ipynb": {
+    "index.html": "274b0515"
+  },
+  "posts/third_post/index.qmd": {
+    "index.html": "8153b92a"
   }
 }
