@@ -1,0 +1,147 @@
+---
+jupyter: python3
+---
+
+<h1> Pokemon Classification Model </h1>
+
+---
+
+<p> Let's start by importing the important stuff that we need. Next we download the data, build the data pipeline, train the model, and then hopefully deploy the model on my blog.</p>
+
+---
+
+```{python}
+from fastai.vision.all import *
+from duckduckgo_search import ddg_images
+from fastcore.all import *
+import pandas as pd
+pd.set_option('display.max_rows', 500)
+import torch
+device = torch.device('mps')
+# torch.default_device(device)
+```
+
+```{python}
+# download data from 
+def search_images(term, max_images=50): return L(ddg_images(term, max_results=max_images)).itemgot('image')
+urls = search_images('fire pokemon', max_images=10)
+urls[0]
+```
+
+Now let's build it to download a bunch of different Pokemon Types!
+
+```{python}
+import os
+df = pd.read_csv('data/pokemon_df.csv')
+df['Ndex'] = df['Ndex'].apply(lambda x: int(x[1:]))
+# for i in range(0, len(df)):
+
+
+# pokemon_types = [
+#     "Normal", "Fire", "Water", "Electric", "Grass", "Ice", 
+#     "Fighting", "Poison", "Ground", "Flying", "Psychic", 
+#     "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel", "Fairy"
+# ]
+
+# path = Path('pokemon_type')
+# from time import sleep
+
+# for o in pokemon_types:
+#     dest = (path/o)
+#     dest.mkdir(exist_ok=True, parents=True)
+#     download_images(dest, urls=search_images(f'{o} pokemon photo'))
+#     sleep(5)
+#     resize_images(path/o, max_size=400, dest=path/o)
+```
+
+```{python}
+path_images = Path('data/pictures/pokemon_1.png')
+```
+
+```{python}
+Path(os.getcwd())
+```
+
+```{python}
+os.rename('data/pictures/pokemon_1.png', 'pokemon_1.png')
+```
+
+```{python}
+for type in df['Type'].unique():
+    os.mkdir(f'data/pictures/{type}')
+```
+
+```{python}
+# Moving them in the correct folders
+for i in range(1, len(df['Ndex'].unique())):
+    frame = df.loc[df['Ndex'] == i]
+    row = frame.iloc[0]
+    type = row['Type']
+    os.rename(f'data/pictures/pokemon_{i}.png', f'data/pictures/{type}/pokemon_{i}.png')
+```
+
+```{python}
+get_image_files(path='data/pictures/')
+```
+
+```{python}
+path = Path('data/pictures/')
+```
+
+```{python}
+pokemons = DataBlock(
+    blocks=(ImageBlock, CategoryBlock), 
+    get_items=get_image_files, 
+    splitter=RandomSplitter(valid_pct=0.2, seed=42),
+    get_y=parent_label,
+    item_tfms=Resize(128))
+```
+
+```{python}
+# now we need to tell our datablock where our items are
+dls = pokemons.dataloaders(path)
+```
+
+```{python}
+dls.valid.show_batch(max_n=9, nrows=3)
+```
+
+```{python}
+default_device()
+```
+
+```{python}
+# Data Augmenation
+
+# This does not run on Mac M1 with MPS devices!
+
+# pokemons = pokemons.new(item_tfms=Resize(128), batch_tfms=aug_transforms(mult=2))
+# dls = pokemons.dataloaders(path)
+# dls.train.show_batch(max_n=8, nrows=2, unique=True)
+```
+
+```{python}
+# Train and learning
+learn = vision_learner(dls, resnet18, metrics=error_rate)
+learn.fine_tune(8)
+```
+
+```{python}
+# Exporting the weights
+learn.path = Path('.')
+learn.export()
+```
+
+```{python}
+# Let's see the big Matrix
+
+interp = ClassificationInterpretation.from_learner(learn)
+interp.plot_confusion_matrix()
+```
+
+```{python}
+interp.plot_top_losses(5, nrows=1)
+```
+
+I mean these are tough. If I had never played pokemon before I could not predict what type they were.
+
