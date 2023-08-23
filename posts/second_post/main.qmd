@@ -1,5 +1,9 @@
 ---
 jupyter: python3
+title: "Pokemon Type Classifier"
+author: "Myself"
+date: "2023-08-23"
+categories: [fun, fastai]
 ---
 
 <h1> Pokemon Classification Model </h1>
